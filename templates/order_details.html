@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    {% block navbar %}{%  include "navbar.html" %}{% endblock %}
+     <style>
+         button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+     </style>
+    <div class="container">
+    <div class="table-responsive text-nowrap">
+    <h2 style="color:#e4606d;font-size:46px;font-family:Helvetica Neue;">Order Summary</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for Item in object.product.all %}
+
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>
+                    <a>
+                     <img style="width: 3em;length:4em;" src="{% if Item.item.img %} {{ Item.item.img.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="" style="height: 130px; width: auto">
+                            </a>
+                </td>
+                <td>{{ Item.item.title }}</td>
+                <td>${{ Item.item.price }}</td>
+                <td>
+                    <a class="mr-2" href="{% url 'cart:remove_qty' Item.item.slug %}"><span class="badge badge-light"><i class="fas fa-minus"></i></span></a>
+                    {{ Item.quantity}}
+                   <a class="mr-2" href="{% url 'cart:add_qty' Item.item.slug %}"><span class="badge badge-light"><i class="fas fa-plus"></i></span></a>
+                </td>
+                <td>${{ Item.get_total_item_price }}</td>
+                <td>
+                   <button onclick="return confirm('Are you sure you want to delete this item?');"> <a style="color:red;" href="{% url 'cart:delete_item' Item.item.slug %}"><span><i class="fas fa-trash float-right""></i></span></a></button>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+            <td colspan="5" class="float-sm-right">Your Cart is Empty</td>
+            <td colspan=4><a class="btn btn-secondary float-right" href="/">Continue Shopping  </a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    <tr class="info">
+        <td colspan="5"><b>Total:</b></td>
+        <td><b>${{ object.get_total }}</b></td>
+    </tr>
+    <tr>
+        <td colspan="5">
+            <a class="btn btn-info float-right ml-2" href="/checkout/">proceed to checkOut</a>
+             <a class="btn btn-secondary float-right" href="/">Continue Shopping  </a></td>
+    </tr>
+    </table>
+    </div></div>
+  </body>
+
+{% endblock body %}

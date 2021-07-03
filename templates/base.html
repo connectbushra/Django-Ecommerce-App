@@ -1,0 +1,41 @@
+{% load static %}
+{% block content %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="{% static 'scss/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'scss/bootstrap.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/payment.css' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all.min.css' %}">
+      <link type="text/css" rel="stylesheet" href="{% static 'css/product.css' %}" />
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+<!--    custom css-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" >
+        <link rel="stylesheet" type="text/css" href="{% static 'css/magnify.css' %}" >
+
+<!--       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">-->
+       <script src="{% static 'js/jquery-2.2.4.min.js'%}"></script>
+       <script src="{% static 'js/jquery.min.js'%}"></script>
+       <script src="{% static 'js/jquery.magnify.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.js'%}"></script>
+    <script src="{% static 'js/cart.js'%}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/all.min.js' %}"></script>
+
+<!--    <script scr="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+
+   <title>Shopicart</title>
+  </head>
+  <body>
+
+    {% block header%}{% endblock%}
+
+        {% block body %}
+    {% endblock body %}
+{%include "footer.html" %}
+{% endblock content %}

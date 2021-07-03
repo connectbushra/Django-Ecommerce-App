@@ -1,0 +1,13 @@
+.bg{
+     background: #4ecdc4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4ecdc4, #556270); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4ecdc4, #556270); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ width:100%;height:100%;
+}
+/**/
+.message{
+color:red;}
+
+.shadow-lg{
+    padding-left: 90px;
+}

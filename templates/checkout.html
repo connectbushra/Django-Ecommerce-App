@@ -1,0 +1,85 @@
+{% load static %}
+{% block body %}
+    {% block navbar %}{%  include "navbar.html" %}{% endblock %}
+<br><br>
+<main>
+          <link rel="stylesheet" href="{% static 'scss/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'scss/bootstrap.css' %}" >
+
+        <div class="container">
+        <div class="masthead">
+    {% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>{% endif %}
+    </div>
+    <div class="row py-5">
+
+
+    <div class="container wow fadeIn">
+      <h2 class="my-2 h2" style="padding-left:20%;font-weight:bold;color:#32325d">Checkout form</h2>
+      <div class="row">
+        <div class="col-md-8 mb-4">
+          <div class="card">
+              <form method="POST"  class="card-body">
+                  {% csrf_token %}
+                  <h3 style=" color:#8ca4b4!important;font-weight:bold">Billing Address</h3><br>
+                  <div class="md-form mb-2">
+                    <label for="full_name" class="">Full Name*</label>
+                    <input type='text' placeholder='smith john' id='Full_Name' name='full_name'  class='form-control' required/>
+                  </div>
+
+                 <div class="md-form mb-2">
+                    <label for="address" class="">Address*</label>
+                  <input type='text' placeholder='1234 Main St' id='address' name='address' class='form-control' required/>
+                </div>
+                <div class="md-form mb-2">
+                      <label for="address2" class="">Address 2 (optional)</label>
+                  <input type='text' placeholder='Apartment or suite' id='address2' name='address2' class='form-control' />
+                </div>
+                    <div class="row">
+                        <div class="col-md-5 mb-1">
+                            <label>Country*</label>
+                             {{ form.country }}
+                            <div class="invalid-feedback">
+                                Please select a valid country.
+                            </div>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                                      <label for="state">State*</label>
+                                      <input type='text' placeholder='Delhi' id='state' name='state' class='form-control' />
+                        </div>
+                            <div class="row">
+                              <div style="margin-left: 1em" class="col-md-5 mb-2">
+                                  <label for="city">City*</label>
+                                  <input type='text' placeholder='Bokaro' id='city' name='city' class='form-control' />
+
+                              </div>
+                             <div class="col-md-3 mb-2">
+                                    <label for="zip">Zip*</label>
+                                    <input type="text" class="form-control" id="zip" name='zip' placeholder="110980" required>
+                                    <div class="invalid-feedback">
+                                        Zip code required.
+                                    </div>
+                                </div>
+          </div>
+
+                            <hr class="mb-4">
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+<div class="col-md-4 mb-4">
+          {% include "order_snippet.html" %}
+        <button style="background-color: #434a4f!important;color:white;border-radius: 5px;
+        height: 40px;margin-top: 5px;border:none;" onmouseover="this.style.backgroundColor='#555';"
+    onmouseout="this.style.backgroundColor='#333';" onclick="location.href='/payment/'" type="submit">
+        <i class="fa fa-credit-card"></i> Continue to Payment</button>
+</div>
+
+{% endblock body %}

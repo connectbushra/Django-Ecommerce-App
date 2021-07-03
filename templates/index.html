@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    {% block navbar %}{%  include "navbar.html" %}{% endblock %}
+
+<main>
+     <div class="container">
+        <div class="masthead">
+    {% if messages %}
+        <div  style="margin:0.2em 12em -1em;" class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>{% endif %}
+    </div>
+<div id="sidebar1" class="sidebar">
+  <div class="sidebar__content">
+    {% block filter %}{%  include "filter.html" %}{% endblock %}
+  </div>
+</div>
+
+<div style="margin-left: 7em;"class="container">
+
+     <h1 style="margin-left: 2em">{% if category %}{{ category.title }}{% else %}Products
+            {% endif %}</h1>
+    <div class="container">
+        <div class="row" id="filteredProducts">
+        {% for item in product %}
+        <div style="padding-bottom: 1em;" class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="">
+                    <a href="{{ item.get_absolute_url }}">
+                        <img style="height: 20em;" class="product-image" src="{{item.img.url}}" alt="">
+                    </a>
+<!--{#                    <ul class="social">#}-->
+<!--{#                        <li><a href="#" data-tip="Add to Wishlist"><i class="fa fa-shopping-bag"></i></a></li>#}-->
+<!--{#                        <li><a href="{{ item.get_home_add_item_url }}" data-tip="Add to Cart"><i class="fa fa-shopping-cart"></i></a></li>#}-->
+<!--{#                    </ul>#}-->
+                    {% if item.offer %}
+                    <span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">20%</span>
+                    {% endif %}
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></h3>
+                    <div class="price">${{ item.price }}
+{#                        <span>${{ item.price }}</span>#}
+                    </div>
+                    {% if user.is_authenticated %}
+                          <a  href="{{ item.get_home_add_item_url }}" class="btn add-to-cart btn-md my-0 p">
+                              Add to cart
+                              <i class="fa fa-shopping-cart"></i>
+                           </a>
+
+                    {% endif %}
+                    <div class="product-rating" style="margin: 1em 0;color:#FFB656;">
+                                    <i class="fa fa-star{% if item.averagereview < 1%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if item.averagereview < 2%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if item.averagereview < 3%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if item.averagereview < 4%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if item.averagereview < 5%}-o empty{% endif%}"></i>
+
+                    </div>
+                </div>
+            </div>
+        </div>{% endfor %}</div>
+  <!--Pagination-->
+
+      {% if is_paginated %}
+      <nav class="d-flex justify-content-center wow fadeIn">
+        <ul class="pagination pg-blue">
+
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          {% endif %}
+{% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+ {% endif %}
+    {% endfor %}
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav></div></div>
+      {% endif %}
+
+
+{% endblock body %}

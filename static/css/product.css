@@ -1,0 +1,225 @@
+
+
+/*----------------------------*\
+	Product slick
+\*----------------------------*/
+
+.product-slick .slick-slide {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+
+/*----------------------------*\
+	Product tab
+\*----------------------------*/
+
+.product-tab {
+  margin-top: 30px;
+}
+
+.product-tab
+ .tab-nav {
+  border-bottom: 1px solid #DADADA;
+  margin-bottom: 30px;
+}
+
+.product-tab
+.tab-nav li {
+  display: inline-block;
+}
+
+.product-tab .tab-nav li+li {
+  margin-left: 300px;
+}
+
+.product-tab
+.tab-nav li a {
+  display: block;
+  padding: 15px 0px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.product-tab
+ .tab-nav li.active {
+  position: relative;
+}
+
+.product-tab .tab-nav li.active a {
+  color: #F8694A;
+}
+
+.product-tab .tab-nav li.active a:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1.5px;
+  height: 3px;
+  width: 30px;
+  background-color: #F8694A;
+}
+
+
+/*=========================================================
+	08 -> PRODUCT DETAILS PAGE
+===========================================================*/
+
+/*----------------------------*\
+	Product view
+\*----------------------------*/
+
+#product-main-view .slick-arrow {
+  opacity: 0;
+}
+
+#product-main-view:hover .slick-arrow {
+  opacity: 1;
+}
+
+#product-view {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#product-view .product-view.slick-slide {
+  opacity: 0.2;
+}
+
+#product-view .product-view.slick-slide.slick-current {
+  opacity: 1;
+  -webkit-box-shadow: 0px 0px 0px 2px #F8694A inset;
+  box-shadow: 0px 0px 0px 2px #F8694A inset;
+}
+
+#product-view .product-view {
+  padding: 7.5px;
+}
+
+.product-view>img {
+  width: 100%;
+}
+
+/*----------------------------*\
+	Product details
+\*----------------------------*/
+
+.product.product-details .product-name {
+  margin-top: 15px;
+}
+
+.product.product-details .product-rating {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.product.product-details .product-options {
+  padding-top: 10px;
+  margin-bottom: 15px;
+  border-top: 1px solid #DADADA;
+  margin-top: 15px;
+}
+
+.product-options .size-option {
+  margin-bottom: 15px;
+}
+
+/*-- reviews --*/
+
+.single-review {
+  margin-bottom: 30px;
+}
+
+.single-review .review-heading>div {
+  display: inline-block;
+}
+
+.single-review .review-heading>div+div {
+  margin-left: 10px;
+}
+
+.single-review .review-rating {
+  display: inline-block;
+}
+
+.single-review .review-rating>i {
+  color: #FFB656;
+}
+
+.single-review .review-rating>i.empty {
+  color: #DADADA;
+}
+
+.single-review .review-body {
+  margin-top: 10px;
+}
+
+.reviews-pages li {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.reviews-pages li a {
+  display: block;
+  min-width: 10px;
+  text-align: center;
+}
+
+.reviews-pages li.active {
+  color: #F8694A;
+}
+
+/*-- review form --*/
+
+.hidden
+{
+    display: none;
+}
+
+.review-form textarea.input {
+  height: 90px;
+}
+
+.review-form .input-rating .stars {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.review-form .input-rating .stars input[type="radio"] {
+  display: none;
+}
+
+.review-form .input-rating .stars>label {
+  float: right;
+  cursor: pointer;
+  padding: 0px 3px;
+  margin: 0px;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.review-form .input-rating .stars>label:hover, .review-form .input-rating .stars>label:hover~label {
+  -webkit-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  /*transform: scale(1.5);*/
+}
+.review-form .input-rating .stars>label:before {
+  content: "\f006";
+  font-family: FontAwesome\5 Free;
+  color: #969494;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.review-form .input-rating .stars>label:hover:before, .review-form .input-rating .stars>label:hover~label:before {
+  content: "\f005";
+  color: #FFB656;
+}
+.review-form .input-rating .stars>input:checked label:before, .review-form .input-rating .stars>input:checked~label:before {
+  content: "\f005";
+  color: #FFB656;
+}
+

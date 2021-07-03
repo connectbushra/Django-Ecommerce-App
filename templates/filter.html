@@ -1,0 +1,46 @@
+{% load static %}
+
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+			<h3 class="mb-4 border-bottom pb-1">Filters</h3>
+			<div class="card mb-4">
+            <h6 class="card-header">Color</h6>
+				<div class="list-group list-group-flush">
+					{% for color in colors %}
+                        <li class="list-group-item">
+						<input class="filter-checkbox" data-filter="color" value="{{color.id}}" type="checkbox" />&nbsp;
+                            <a>{{color.name}}</a>
+                        <button class="btn" style="background-color: {{color.code}}; margin-top: -5px;float: right"></button>
+					</li>
+					{% endfor %}
+                 <div class="show-more">Show more....</div>
+				</div>
+			</div>
+<div class="card mb-4">
+				<div class="list-person">
+					{% for person in person_type %}
+					<li class="list-item">
+                        <input class="filter-checkbox" data-filter="person" value="{{ person.id}}" type="checkbox" />&nbsp;
+						<a>{{person.type}}</a>
+                       	</li>
+					{% endfor %}
+
+				</div>
+</div>
+{#<!--			&lt;!&ndash; Filter 3 &ndash;&gt;-->#}
+{#<!--			<div class="card mb-4">-->#}
+{#<!--				<h6 class="card-header">Brands</h6>-->#}
+{#<!--				<div class="list-group list-group-flush">-->#}
+{#<!--					{% for brand in brands %}-->#}
+{#<!--					<li class="list-group-item">-->#}
+{#<!--						<input class="filter-checkbox" data-filter="brand" value="{{brand.brand__id}}" type="checkbox" />&nbsp;-->#}
+{#<!--						{{brand.brand__title}}-->#}
+{#<!--					</li>-->#}
+{#<!--					{% endfor %}-->#}
+{#<!--				</div>-->#}
+{#<!--			</div>-->#}
+
+
+<script>
+
+/*******************      Show More ,Less *****************/
+</script>

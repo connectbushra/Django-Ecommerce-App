@@ -1,0 +1,33 @@
+{% load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register.css'%}">
+</head>
+{%block body%}
+   <div class="wrap">
+            {% if messages %}
+       <ul class="message">
+            {% for message in messages %}
+                {{ message}}
+            {% endfor %}
+        </ul>
+       {% endif %}
+   <h2>Sign Up</h2>
+    <form  action="register" method="POST">
+     {% csrf_token %}
+    <input type="text" placeholder="username" name="username" required><br><br>
+    <input type="text" placeholder="Email" name="email" required><br><br>
+    <input type="password" placeholder="password" name="password1" required><br><br>
+    <input type="password" placeholder="Re-type password" name="password2" required><br><br>
+    <input type="submit" value="Sign Up">
+
+    </form>
+
+    <a href="{% url 'account:login' %}" style="padding-left: 40%;text-decoration:none;color:darkblue;">Login</a>
+   </div>
+{% endblock body%}
+{% endblock content %}
